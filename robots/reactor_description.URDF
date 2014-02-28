@@ -36,7 +36,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://reactor_description/meshes/base_link.STL" />
+          filename="package://reactor_description/meshes/base_link_hull.STL" />
       </geometry>
     </collision>
   </link>
@@ -76,7 +76,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://reactor_description/meshes/shoulder_link.STL" />
+          filename="package://reactor_description/meshes/shoulder_link_hull.STL" />
       </geometry>
     </collision>
   </link>
@@ -134,7 +134,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://reactor_description/meshes/bicep_link.STL" />
+          filename="package://reactor_description/meshes/bicep_link_hull.STL" />
       </geometry>
     </collision>
   </link>
@@ -192,7 +192,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://reactor_description/meshes/forearm_link.STL" />
+          filename="package://reactor_description/meshes/forearm_link_hull.STL" />
       </geometry>
     </collision>
   </link>
@@ -250,7 +250,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://reactor_description/meshes/wrist_1.STL" />
+          filename="package://reactor_description/meshes/wrist_1_hull.STL" />
       </geometry>
     </collision>
   </link>
@@ -308,7 +308,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://reactor_description/meshes/wrist_2.STL" />
+          filename="package://reactor_description/meshes/wrist_2_hull.STL" />
       </geometry>
     </collision>
   </link>
@@ -366,7 +366,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://reactor_description/meshes/gripper_link.STL" />
+          filename="package://reactor_description/meshes/gripper_link_hull.STL" />
       </geometry>
     </collision>
   </link>
