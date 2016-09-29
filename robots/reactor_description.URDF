@@ -276,17 +276,17 @@
     name="wrist_2">
     <inertial>
       <origin
-        xyz="0.022349 -5.4754E-07 0.0089164"
+        xyz="0.0257033323112986 -4.70323974922438E-07 0.00799551302154672"
         rpy="0 0 0" />
       <mass
-        value="0.055706" />
+        value="0.0648521292346638" />
       <inertia
-        ixx="1.5957E-05"
-        ixy="2.0952E-10"
-        ixz="3.3629E-06"
-        iyy="2.1196E-05"
-        iyz="-2.4643E-10"
-        izz="1.4482E-05" />
+        ixx="2.26217268610599E-05"
+        ixy="3.18902648619731E-10"
+        ixz="1.6408102941381E-06"
+        iyy="2.80862620457571E-05"
+        iyz="-2.80885432326681E-10"
+        izz="2.36871265523198E-05" />
     </inertial>
     <visual>
       <origin
@@ -331,20 +331,20 @@
       upper="3.141593" />
   </joint>
   <link
-    name="gripper_link">
+    name="finger_link_1">
     <inertial>
       <origin
-        xyz="0.0091884 -7.3309E-13 -3.4513E-05"
+        xyz="0 -0.025883 -0.006455"
         rpy="0 0 0" />
       <mass
-        value="0.02487" />
+        value="0.0078621" />
       <inertia
-        ixx="1.5997E-05"
-        ixy="1.6551E-16"
-        ixz="8.3911E-09"
-        iyy="7.3918E-06"
-        iyz="-2.7145E-16"
-        izz="1.5931E-05" />
+        ixx="1.332E-06"
+        ixy="-1.5154E-21"
+        ixz="-1.2894E-21"
+        iyy="1.3852E-06"
+        iyz="2.7871E-07"
+        izz="2.1828E-06" />
     </inertial>
     <visual>
       <origin
@@ -352,7 +352,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://reactor_description/meshes/gripper_link.STL" />
+          filename="package://reactor_description/meshes/finger_link.STL" />
       </geometry>
       <material
         name="">
@@ -366,21 +366,86 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://reactor_description/meshes/gripper_link_hull.STL" />
+          filename="package://reactor_description/meshes/finger_link_hull.STL" />
       </geometry>
     </collision>
   </link>
   <joint
-    name="gripper_joint"
-    type="fixed">
+    name="finger_joint"
+    type="prismatic">
     <origin
-      xyz="0.04789 0 0"
-      rpy="0 0 0" />
+      xyz="0.088882 -0.0187500 0.0012072"
+      rpy="1.5708 -1.5572 -3.1416" />
     <parent
       link="wrist_2" />
     <child
-      link="gripper_link" />
+      link="finger_link_1" />
     <axis
-      xyz="0 0 0" />
+      xyz="0 0 1" />
+    <limit
+      effort="1.5"
+      velocity="0.01"
+      lower="0"
+      upper="0.014" />
+  </joint>
+  <link
+    name="finger_link_2">
+    <inertial>
+      <origin
+        xyz="8.3267E-17 -0.025883 -0.006455"
+        rpy="0 0 0" />
+      <mass
+        value="0.0078621" />
+      <inertia
+        ixx="1.332E-06"
+        ixy="-3.1416E-21"
+        ixz="-2.193E-21"
+        iyy="1.3852E-06"
+        iyz="2.7871E-07"
+        izz="2.1828E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://reactor_description/meshes/finger_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.25098 0.25098 0.25098 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://reactor_description/meshes/finger_link_hull.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="finger_joint_2"
+    type="prismatic">
+    <origin
+      xyz="0.088882 0.0187500 0.0012072"
+      rpy="1.5708 1.5572 -1.4508E-15" />
+    <parent
+      link="wrist_2" />
+    <child
+      link="finger_link_2" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      effort="1.5"
+      velocity="0.01"
+      lower="0"
+      upper="0.014" />
+    <mimic
+      joint="finger_joint" />
   </joint>
 </robot>
