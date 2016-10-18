@@ -1,22 +1,43 @@
+<?xml version="1.0"?>
 <launch>
-  <include
-    file="$(find gazebo_worlds)/launch/empty_world.launch" />
+
+  <!-- Setup emtpy world -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch" />
+  
+  <!-- Load and spawn robot description -->
+  <param name="robot_description" textfile="$(find reactor_description)/robots/reactor_description.URDF"/>
+  <node name="spawn_model" pkg="gazebo_ros" type="spawn_model" args="-urdf -param robot_description -model reactor_description" output="screen" />
+
   <node
     name="tf_footprint_base"
     pkg="tf"
     type="static_transform_publisher"
     args="0 0 0 0 0 0 base_link base_footprint 40" />
-  <node
-    name="spawn_model"
-    pkg="gazebo"
-    type="spawn_model"
-    args="-file $(find reactor_description)/robots/reactor_description.URDF-urdf -model reactor_description"
-    output="screen" />
-  <include
-    file="$(find pr2_controller_manager)/controller_manager.launch" />
+
+  <!-- Load specific controllers to Gazebo -->
+  <rosparam file="$(find reactor_description)/gazebo_controllers/reactor_controller.yaml" command="load"/>
+  <node name="arm_controller_spawner" pkg="controller_manager" type="spawner" output="screen" args="trajectory_controllers --shutdown-timeout 0.5"/>
+
+  <!-- Setup initial simulation positions -->
+  <node name="arm_setup" pkg="reactor_controller" type="body_part_setup.py" output="screen"
+            args="trajectory_controllers">
+      <param name="init_position" value="0, 0.407, -1.54, 1.43, 0, 0.1"/>
+  </node>
+
+  <!-- Robot state publisher -->
+  <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher">
+    <param name="publish_frequency" type="double" value="100.0" />
+    <param name="tf_prefix" type="string" value="" />
+  </node>
+
+  <!-- joint_state_controller -->
+  <rosparam file="$(find reactor_controller)/config/joint_state_controller.yaml" command="load"/>
+  <node name="joint_state_controller_spawner" pkg="controller_manager" type="spawner" args="joint_state_controller --shutdown-timeout 0.5" />
+
   <node
     name="fake_joint_calibration"
     pkg="rostopic"
     type="rostopic"
     args="pub /calibrated std_msgs/Bool true" />
+
 </launch>

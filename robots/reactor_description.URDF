@@ -1,13 +1,82 @@
+<?xml version="1.0"?>
 <robot
   name="reactor_description">
+
+  <gazebo>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+      <robotNamespace>/</robotNamespace>
+    </plugin>
+  </gazebo>
+
+  <transmission name="shoulder_yaw_trans" type="SimpleTransmission">
+          <type>transmission_interface/SimpleTransmission</type>
+          <joint name="shoulder_yaw">
+              <hardwareInterface>PositionJointInterface</hardwareInterface>
+          </joint>
+          <actuator name="shoulder_yaw_actuator">
+              <mechanicalReduction>1</mechanicalReduction>
+          </actuator>
+  </transmission>
+  <transmission name="shoulder_pitch_trans" type="SimpleTransmission">
+          <type>transmission_interface/SimpleTransmission</type>
+          <joint name="shoulder_pitch">
+              <hardwareInterface>PositionJointInterface</hardwareInterface>
+          </joint>
+          <actuator name="shoulder_pitch_actuator">
+              <mechanicalReduction>1</mechanicalReduction>
+          </actuator>
+  </transmission>
+  <transmission name="elbow_pitch_trans" type="SimpleTransmission">
+          <type>transmission_interface/SimpleTransmission</type>
+          <joint name="elbow_pitch">
+              <hardwareInterface>PositionJointInterface</hardwareInterface>
+          </joint>
+          <actuator name="elbow_pitch_actuator">
+              <mechanicalReduction>1</mechanicalReduction>
+          </actuator>
+  </transmission>
+  <transmission name="wrist_pitch_trans" type="SimpleTransmission">
+          <type>transmission_interface/SimpleTransmission</type>
+          <joint name="wrist_pitch">
+              <hardwareInterface>PositionJointInterface</hardwareInterface>
+          </joint>
+          <actuator name="wrist_pitch_actuator">
+              <mechanicalReduction>1</mechanicalReduction>
+          </actuator>
+  </transmission>
+  <transmission name="wrist_roll_trans" type="SimpleTransmission">
+          <type>transmission_interface/SimpleTransmission</type>
+          <joint name="wrist_roll">
+              <hardwareInterface>PositionJointInterface</hardwareInterface>
+          </joint>
+          <actuator name="wrist_roll_actuator">
+              <mechanicalReduction>1</mechanicalReduction>
+          </actuator>
+  </transmission>
+  <transmission name="finger_trans" type="SimpleTransmission">
+          <type>transmission_interface/SimpleTransmission</type>
+          <joint name="finger_joint">
+              <hardwareInterface>PositionJointInterface</hardwareInterface>
+          </joint>
+          <actuator name="finger_joint_actuator">
+              <mechanicalReduction>1</mechanicalReduction>
+          </actuator>
+  </transmission>
+
+  <link name="world"/>
+
+  <joint name="grounding" type="fixed">
+    <parent link="world"/>
+    <child link="base_link"/>
+  </joint>
+
   <link
     name="base_link">
     <inertial>
       <origin
         xyz="-3.9657E-09 2.0144E-09 0.04262"
         rpy="0 0 0" />
-      <mass
-        value="0.33742" />
+      <mass value="0.33742" />
       <inertia
         ixx="0.0011303"
         ixy="2.3398E-15"

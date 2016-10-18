@@ -1,0 +1,16 @@
+trajectory_controllers:
+  type: "position_controllers/JointTrajectoryController"
+  joints:
+    - shoulder_yaw
+    - shoulder_pitch
+    - elbow_pitch
+    - wrist_pitch
+    - wrist_roll
+    - finger_joint
+  gains:
+    shoulder_yaw: {p: 10000, d: 60,   i: 100, i_clamp: 100}
+    shoulder_pitch: {p: 10000, d: 100.0,i: 100, i_clamp: 100}
+    elbow_pitch: {p: 10000, d: 15.0, i: 100, i_clamp: 100}
+    wrist_pitch: {p: 1000, d: 15.0, i: 100, i_clamp: 100}
+    wrist_roll: {p: 1000,   d: 1.5,  i: 100, i_clamp: 100}
+    finger_joint: {p: 1000,   d: 1.5,  i: 100, i_clamp: 100}

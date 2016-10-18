@@ -1,0 +1,78 @@
+shoulder_yaw_controller:
+  type: position_controllers/JointTrajectoryController
+  joints:
+     - shoulder_yaw
+  constraints:
+      goal_time: 0.6 
+      stopped_velocity_tolerance: 0.05
+      pan_joint: {trajectory: 0.1, goal: 0.1}
+      tilt_joint: {trajectory: 0.1, goal: 0.1}
+  stop_trajectory_duration: 0.5 
+  state_publish_rate:  25  
+  action_monitor_rate: 10
+
+shoulder_pitch_controller:
+  type: position_controllers/JointTrajectoryController
+  joints:
+     - shoulder_pitch
+  constraints:
+      goal_time: 0.6 
+      stopped_velocity_tolerance: 0.05
+      pan_joint: {trajectory: 0.1, goal: 0.1}
+      tilt_joint: {trajectory: 0.1, goal: 0.1}
+  stop_trajectory_duration: 0.5 
+  state_publish_rate:  25  
+  action_monitor_rate: 10
+
+elbow_pitch_controller:
+  type: position_controllers/JointTrajectoryController
+  joints:
+     - elbow_pitch
+  constraints:
+      goal_time: 0.6 
+      stopped_velocity_tolerance: 0.05
+      pan_joint: {trajectory: 0.1, goal: 0.1}
+      tilt_joint: {trajectory: 0.1, goal: 0.1}
+  stop_trajectory_duration: 0.5 
+  state_publish_rate:  25  
+  action_monitor_rate: 10
+
+wrist_pitch_controller:
+  type: position_controllers/JointTrajectoryController
+  joints:
+     - wrist_pitch
+  constraints:
+      goal_time: 0.6 
+      stopped_velocity_tolerance: 0.05
+      pan_joint: {trajectory: 0.1, goal: 0.1}
+      tilt_joint: {trajectory: 0.1, goal: 0.1}
+  stop_trajectory_duration: 0.5 
+  state_publish_rate:  25  
+  action_monitor_rate: 10
+
+wrist_roll_controller:
+  type: position_controllers/JointTrajectoryController
+  joints:
+     - wrist_roll
+  constraints:
+      goal_time: 0.6 
+      stopped_velocity_tolerance: 0.05
+      pan_joint: {trajectory: 0.1, goal: 0.1}
+      tilt_joint: {trajectory: 0.1, goal: 0.1}
+  stop_trajectory_duration: 0.5 
+  state_publish_rate:  25  
+  action_monitor_rate: 10
+
+gripper_controller:
+  type: position_controllers/JointTrajectoryController
+  joints:
+     - finger_joint 
+  constraints:
+      goal_time: 0.6 
+      stopped_velocity_tolerance: 0.05
+      pan_joint: {trajectory: 0.1, goal: 0.1}
+      tilt_joint: {trajectory: 0.1, goal: 0.1}
+  stop_trajectory_duration: 0.5 
+  state_publish_rate:  25  
+  action_monitor_rate: 10
+
