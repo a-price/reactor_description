@@ -10,4 +10,4 @@ before_install:
  - docker exec -it build bash -c "cd ~/catkin_ws && apt update && source /opt/ros/kinetic/setup.bash && rosdep install --from-paths src --ignore-src -r -y && rm -rf /var/lib/apt/lists/*"
 script:
  - docker exec -it build bash -c "source /opt/ros/kinetic/setup.bash && cd ~/catkin_ws && catkin_make"
- - docker exec -it build bash -c "source ~/catkin_ws/devel/setup.bash && roscd robotiq_arg85_description && rosrun roslaunch roslaunch-check launch"
+ - docker exec -it build bash -c "source ~/catkin_ws/devel/setup.bash && roscd reactor_description && rosrun roslaunch roslaunch-check launch"
