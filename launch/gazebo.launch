@@ -3,7 +3,7 @@
   <include file="$(find gazebo_ros)/launch/empty_world.launch" />
 
   <!-- Load and spawn robot description -->
-  <param name="robot_description" command="$(find xacro)/xacro.py $(find reactor_description)/robots/reactor_description.gazebo.xacro"/>
+  <param name="robot_description" command="xacro --inorder $(find reactor_description)/robots/reactor_description.gazebo.xacro"/>
   <node name="spawn_model" pkg="gazebo_ros" type="spawn_model" args="-urdf -param robot_description -model reactor_description" output="screen" />
 
   <!-- Robot state publisher -->

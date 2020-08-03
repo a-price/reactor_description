@@ -32,5 +32,5 @@ install(FILES urdf.rviz
 
 if (CATKIN_ENABLE_TESTING)
   find_package(roslaunch REQUIRED)
-  roslaunch_add_file_check(launch)
+  roslaunch_add_file_check(launch USE_TEST_DEPENDENCIES)
 endif()
