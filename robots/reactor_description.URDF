@@ -1,5 +1,5 @@
 <robot
-  name="reactor_description">
+  name="reactor">
   <link
     name="base_link">
     <inertial>
